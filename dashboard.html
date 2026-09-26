@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Lab Inventory</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-layout">
+<aside class="sidebar">
+
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">🧪</div>
+                <div class="sidebar-logo-text">
+                    <h2>Lab Inventory</h2>
+                    <p>Management System</p>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+    
+<a href="dashboard.html" class=""><span class="nav-icon">🏠</span><span class="nav-text">Dashboard</span></a>
+<a href="inventory.html?lab=physics" class=""><span class="nav-icon">⚛️</span><span class="nav-text">Physics</span></a>
+<a href="inventory.html?lab=chemistry" class=""><span class="nav-icon">🧪</span><span class="nav-text">Chemistry</span></a>
+<a href="inventory.html?lab=biology" class=""><span class="nav-icon">🧬</span><span class="nav-text">Biology</span></a>
+<a href="reports.html" class=""><span class="nav-icon">📊</span><span class="nav-text">Reports</span></a>
+<a href="orders.html" class=""><span class="nav-icon">📦</span><span class="nav-text">Order Status</span></a>
+<a href="notifications.html" class=""><span class="nav-icon">🔔</span><span class="nav-text">Notifications</span></a>
+
+        </nav>
+        <div class="sidebar-footer">
+            <button type="button" class="logout-button" onclick="logout()">Logout</button>
+        </div>
+    </aside>
+<main class="main-content">
+    <header class="page-header">
+        <div>
+            <p class="page-header-label">Science Laboratory</p>
+            <h1>Dashboard</h1>
+        </div>
+        <div class="page-header-right">Logged in as <strong id="currentUsername">labassistant</strong></div>
+    </header>
+
+    <section class="welcome-section">
+        <p>Welcome back</p>
+        <h2>Laboratory Inventory Dashboard</h2>
+        <p>Select a laboratory below to view and manage its inventory.</p>
+    </section>
+
+    <section class="dashboard-alert" id="dashboardAlertBar">
+        <div class="dashboard-alert-main">
+            <div class="dashboard-alert-icon" id="dashboardAlertIcon">🔔</div>
+            <div class="dashboard-alert-copy">
+                <strong id="dashboardAlertCount">Checking alerts…</strong>
+                <span id="dashboardAlertText">Review inventory notifications and important stock updates.</span>
+            </div>
+        </div>
+        <a class="dashboard-alert-link" href="notifications.html">View all notifications <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section>
+        <div class="section-heading">
+            <p>Laboratories</p>
+            <h2>Select a Laboratory</h2>
+        </div>
+        <div class="lab-grid">
+            <div class="lab-card" onclick="openLab('physics')">
+                <div class="lab-card-icon">⚛️</div>
+                <h3>Physics Laboratory</h3>
+                <p>View physics equipment, measuring instruments and reusable materials.</p>
+                <span class="lab-card-link">Open Inventory →</span>
+            </div>
+            <div class="lab-card" onclick="openLab('chemistry')">
+                <div class="lab-card-icon">🧪</div>
+                <h3>Chemistry Laboratory</h3>
+                <p>View laboratory equipment, chemicals and consumable materials.</p>
+                <span class="lab-card-link">Open Inventory →</span>
+            </div>
+            <div class="lab-card" onclick="openLab('biology')">
+                <div class="lab-card-icon">🧬</div>
+                <h3>Biology Laboratory</h3>
+                <p>View microscopes, instruments and biology equipment.</p>
+                <span class="lab-card-link">Open Inventory →</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-20">
+        <div class="section-heading">
+            <p>Overview</p>
+            <h2>Inventory Overview</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card"><p>Total Materials</p><h3 id="totalMaterials">0</h3></div>
+            <div class="stat-card"><p>Low Stock</p><h3 id="lowStockMaterials">0</h3></div>
+            <div class="stat-card"><p>Reusable</p><h3 id="reusableMaterials">0</h3></div>
+            <div class="stat-card"><p>Consumable</p><h3 id="consumableMaterials">0</h3></div>
+        </div>
+    </section>
+
+    <section class="mt-20">
+        <div class="section-heading">
+            <p>Alerts</p>
+            <h2>Recent Notifications</h2>
+        </div>
+        <div id="dashboardNotifications" class="notification-list"></div>
+    </section>
+</main>
+</div>
+    <!-- Supabase client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js?v=20260926-03"></script>
+    <script src="js/app.js?v=20260926-03"></script>
+
+</body>
+</html>
